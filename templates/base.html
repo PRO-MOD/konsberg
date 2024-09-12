@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/@webpixels/css@1.1.5/dist/index.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+    <!-- Sidebar -->
+    <nav class="navbar navbar-vertical navbar-expand-lg px-0 py-3 navbar-light bg-white border-end-lg" id="navbarVertical">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+                <img src="https://preview.webpixels.io/web/img/logos/clever-primary.svg" alt="Logo">
+            </a>
+            <div class="collapse navbar-collapse" id="sidebarCollapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/Unbalnce">Unbalnce</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/analytics">Analytics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/old/messages">Messages <span class="badge bg-soft-primary text-primary rounded-pill ms-auto">6</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/old/collections">Collections</a></li>
+                </ul>
+                <hr class="navbar-divider my-5 opacity-20">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+        <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+                <h1 class="h2 mb-0 ls-tight">{% block header %}Application{% endblock %}</h1>
+                <ul class="nav nav-tabs mt-4" id="tab-nav">
+                    <li class="nav-item"><a href="allfiles" class="nav-link" data-url="allfiles">All files</a></li>
+                    <li class="nav-item"><a href="shared" class="nav-link" data-url="shared">Shared</a></li>
+                    <li class="nav-item"><a href="filerequests" class="nav-link" data-url="filerequests">File requests</a></li>
+                </ul>
+            </div>
+        </header>
+        <main class="py-0 bg-surface-secondary">
+            <div class="container-fluid" id="main-content">
+                {% block content %}{% endblock %}
+             </div>
+        </main>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Add click event listeners to the nav links
+        document.querySelectorAll('#tab-nav a').forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();  // Prevent the default anchor behavior
+    
+                // Get the new path segment
+                const newPath = event.target.getAttribute('data-url');
+    
+                // Get the base path, e.g., "/dashboard"
+                const basePath = window.location.pathname.split('/').slice(0, 2).join('/'); // Keep base path like /dashboard
+    
+                // Generate the new URL, relative to the base path
+                const newUrl = `${basePath}/${newPath}`;
+    
+                // Update the URL without reloading the page
+                history.pushState(null, '', newUrl);
+    
+                // Load content dynamically based on the URL (e.g., via AJAX)
+                loadContent(newPath);
+            });
+        });
+    
+        // Function to load content based on the path
+        function loadContent(path) {
+            // Example of dynamically loading content; replace with your actual loading logic
+            const contentElement = document.getElementById('main-content');
+            contentElement.innerHTML = `<p>Loading ${path} content...</p>`;
+    
+            // Simulate an AJAX call to get content; replace this with actual AJAX logic
+            setTimeout(() => {
+                contentElement.innerHTML = `<p>Content for ${path} loaded successfully!</p>`;
+            }, 500);  // Simulate a delay
+        }
+    
+        // Handle browser navigation (e.g., back/forward buttons)
+        window.addEventListener('popstate', function () {
+            // Load content based on the current path
+            const path = window.location.pathname.split('/').pop();
+            loadContent(path);  // Load content based on the current path
+        });
+    });
+    </script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Chart Plotter</title>
+    <!-- ApexCharts CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts/dist/apexcharts.css">
+
+
+    <link rel="shortcut icon" href="static/images/favicon.png" type="image/png" />
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css" />
+
+    <!-- Fonts style -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- Font awesome style -->
+    <link href="static/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/style.css" rel="stylesheet" />
+    <!-- Responsive style -->
+    <link href="static/css/responsive.css" rel="stylesheet" />
+
+    <!-- Custom styles for the button color -->
+    <style>
+        /* Define styles for the theme-colored button */
+        .btn-theme-color {
+            background-color: #107355; /* Replace with your desired color */
+            color: #ffffff; /* Set text color */
+            border-color: #107355; /* Set border color */
+        }
+
+        /* Optionally, define hover and focus states for the button */
+        .btn-theme-color:hover,
+        .btn-theme-color:focus {
+            background-color: #0e6048; /* Darker shade for hover */
+            border-color: #0e6048;
+        }
+
+        /* Prediction section styling */
+        .predict_section {
+           
+            position: absolute;
+            top: 54%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 100%;
+        }
+
+        /* Adjust form container styling */
+        .predict_section .box {
+            padding: 18px;
+            border-radius: 2px;
+            background-color: rgb(255 255 255 / 36%);
+            box-shadow: 0 4px 8px rgb(0 0 0 / 83%);
+            color: #252525;
+        }
+
+        /* Adjust image preview styling */
+        #imagePreview {
+            margin-bottom: 20px;
+            max-width: 100%;
+            height: auto;
+            display: none;
+        }
+    </style>
+    <style>
+        
+        h1 {
+            text-align: center;
+            color: #ffffff; 
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        #chartsContainer {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 1fr;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+        }
+        .chart-box {
+            background-color: rgba(255, 255, 255, 0.9); /* Light white background with opacity */
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .chart-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero_area">
+        <div class="hero_bg_box">
+            <img src="static/images/m4.jpg" alt="">
+        </div>
+
+        <!-- Header section starts -->
+        <header class="header_section">
+            <div class="container">
+              <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="/">
+                  <span>
+                    <img  src="static/images/logo.png" class="img-fluid" style="max-width: 50px; height: auto;"  >
+                      Predictive Maintenance
+                  </span>
+                </a>
+      
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""> </span>
+                </button>
+      
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/form"> Make Prediction</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/analysis">Analysis</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/info">Info</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/logout">logout</a>
+                        </li>
+                    
+                      </ul>
+                </div>
+              </nav>
+            </div>
+          </header>
+        <!-- End header section -->
+
+        <!-- Prediction section on top of the hero image -->
+        <section class="predict_section layout_padding ">
+            <div class="container">
+                <h1>MACHINE ANALYSIS</h1>
+    
+                <!-- Container for All Charts -->
+                <div id="chartsContainer">
+                    <div id="chart1" class="chart-box"></div>
+                    <div id="chart2" class="chart-box"></div>
+                    <div id="chart3" class="chart-box"></div>
+                    <div id="chart4" class="chart-box"></div>
+                    <div id="chart5" class="chart-box"></div>
+                    <div id="chart6" class="chart-box"></div>
+                </div>
+            
+            
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer section -->
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 footer_col">
+                    <div class="footer_contact">
+                        <h4>Reach at...</h4>
+                        <div class="contact_link_box">
+                            <a href="https://www.google.com/maps/place/Ghansoli,+Navi+Mumbai,+Maharashtra/@19.1336,72.9874,15z">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span>Ghansoli</span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <span>Call +91 7039678397</span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <span>dermasure@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+                  
+                </div>
+                <div class="col-md-6 col-lg-3 footer_col">
+                    <div class="footer_detail">
+                        <h4>About</h4>
+                        <p>
+                            We are dedicated to revolutionizing equipment maintenance with cutting-edge AI technology. Our solutions help businesses optimize performance, reduce costs, and extend the lifespan of critical assets.                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2 mx-auto footer_col">
+                    <div class="footer_link_box">
+                        <h4>Links</h4>
+                        <div class="footer_links">
+                            <a href="/">Home</a>
+                            <a href="/form">Make Prediction</a>
+                            <a href="/info">info</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 footer_col">
+                    <h4>Newsletter</h4>
+                    <form action="#">
+                        <!-- <input type="email" placeholder="Enter email" /> -->
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-info">
+                <p>
+                    &copy; <span id="displayYear"></span> All Rights Reserved By
+                    <a href="https://html.design/">DermaSure</a>
+                    <!-- &copy; <span id="displayYear"></span> Distributed By
+                    <a href="https://themewagon.com/">ThemeWagon</a> -->
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ApexCharts JS -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- SheetJS JS (for parsing Excel) -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+    <script>
+       
+        const datasetUrl = "static/analysis/Unique_Frequency_Range_Readings.xlsx";
+
+       // Function to read the Excel file and parse it
+function readExcelFile(url) {
+    return fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to fetch file: ${response.statusText}`);
+            }
+            return response.arrayBuffer();
+        })
+        .then(data => {
+            // Read the workbook using SheetJS
+            const workbook = XLSX.read(data, { type: 'array' });
+
+            // Log the sheet names to verify if sheets are being detected correctly
+            console.log('Available Sheets:', workbook.SheetNames);
+
+            // Check if there are any sheets in the workbook
+            if (workbook.SheetNames.length === 0) {
+                throw new Error('No sheets found in the workbook.');
+            }
+
+            // Select the first sheet for processing
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+
+            // Verify the content of the worksheet
+            if (!worksheet) {
+                throw new Error('Worksheet is empty or cannot be found.');
+            }
+
+            // Log the raw worksheet data to understand its structure
+            console.log('Worksheet Raw Data:', worksheet);
+
+            // Attempt to convert the sheet data to JSON format
+            const jsonData = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
+
+            // Log preview of the parsed JSON data
+            console.log('Parsed Data:', jsonData);
+
+            // Check if the parsed data is empty
+            if (jsonData.length === 0) {
+                throw new Error('Parsed data is empty. Check the sheet content.');
+            }
+
+            return jsonData;
+        })
+        .catch(err => {
+            // Detailed error logging
+            console.error('Error reading the dataset:', err.message);
+            alert(`Error reading the dataset: ${err.message}`);
+        });
+}
+
+        // Function to create charts
+        function createCharts(dataset) {
+            // Extract relevant data from the dataset
+            const amplitude = dataset.map(d => parseFloat(d.Amplitude).toFixed(3));
+            const frequency = dataset.map(d => parseFloat(d.Frequency).toFixed(3));
+            const operatingHours = dataset.map(d => parseFloat(d.OperatingHours).toFixed(3));
+            const lifespan = dataset.map(d => parseFloat(d.Lifespan).toFixed(3));
+            const unbalanceForce = dataset.map(d => parseFloat(d.UnbalanceForce).toFixed(3));
+            const severity = dataset.map(d => parseFloat(d.Severity).toFixed(3));
+
+            // Predictive data (sampled or calculated)
+            const predictedUnbalanceForce = dataset.map(d => parseFloat(d.UnbalanceForce).toFixed(3));
+            const predictedMass = dataset.map(d => parseFloat(d.PredictedMass).toFixed(3));
+
+            // Color palette for aesthetic appeal
+            const colors = ['#1E90FF', '#FF6347', '#32CD32', '#FF69B4', '#FFD700', '#8A2BE2'];
+
+            // Chart 1: Amplitude vs Frequency (Box Plot)
+            var options1 = {
+                series: [{
+                    name: 'Amplitude',
+                    data: amplitude
+                }],
+                chart: {
+                    type: 'line',
+                    height: 220,
+                    toolbar: {
+                        show: true,
+                        tools: {
+                            zoom: false,
+                            zoomin: false,
+                            zoomout: false,
+                            pan: false,
+                            reset: false,
+                            download: true
+                        }
+                    }
+                },
+                xaxis: {
+                    categories: frequency,
+                    title: { text: 'Frequency' }
+                },
+                title: {
+                    text: 'Amplitude vs Frequency',
+                    align: 'center',
+                    style: { color: '#444' }
+                },
+                colors: [colors[0]],
+                stroke: { width: 2 }
+            };
+
+            var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+            chart1.render();
+
+            // Chart 2: Operating Hours vs Lifespan (Line Plot)
+            var options2 = {
+                series: [{
+                    name: 'Lifespan',
+                    data: lifespan
+                }],
+                chart: {
+                    type: 'line',
+                    height: 220,
+                    toolbar: {
+                        show: true,
+                        tools: {
+                            zoom: false,
+                            zoomin: false,
+                            zoomout: false,
+                            pan: false,
+                            reset: false,
+                            download: true
+                        }
+                    }
+                },
+                xaxis: {
+                    categories: operatingHours,
+                    title: { text: 'Operating Hours' }
+                },
+                title: {
+                    text: 'Operating Hours vs Lifespan',
+                    align: 'center',
+                    style: { color: '#444' }
+                },
+                colors: [colors[1]],
+                stroke: { width: 2 }
+            };
+
+            var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+            chart2.render();
+
+            // Chart 3: Frequency vs Unbalance Force (Scatter Plot with Severity)
+            var options3 = {
+                series: [{
+                    name: 'Unbalance Force',
+                    data: frequency.map((f, i) => ({
+                        x: f,
+                        y: unbalanceForce[i]
+                    }))
+                }],
+                chart: {
+                    type: 'scatter',
+                    height: 220,
+                    toolbar: {
+                        show: true,
+                        tools: {
+                            zoom: false,
+                            zoomin: false,
+                            zoomout: false,
+                            pan: false,
+                            reset: false,
+                            download: true
+                        }
+                    }
+                },
+                title: {
+                    text: 'Frequency vs Unbalance Force',
+                    align: 'center',
+                    style: { color: '#444' }
+                },
+                xaxis: {
+                    title: { text: 'Frequency' }
+                },
+                yaxis: {
+                    title: { text: 'Unbalance Force' }
+                },
+                colors: [colors[2]],
+                markers: {
+                    size: 5,
+                    colors: severity.map(s => (s > 5 ? '#FF6347' : '#32CD32')) // Red for higher severity
+                }
+            };
+
+            var chart3 = new ApexCharts(document.querySelector("#chart3"), options3);
+            chart3.render();
+
+            // Chart 4: Operating Hours vs Severity (Line Plot)
+            var options4 = {
+                series: [{
+                    name: 'Severity',
+                    data: severity
+                }],
+                chart: {
+                    type: 'line',
+                    height: 220,
+                    toolbar: {
+                        show: true,
+                        tools: {
+                            zoom: false,
+                            zoomin: false,
+                            zoomout: false,
+                            pan: false,
+                            reset: false,
+                            download: true
+                        }
+                    }
+                },
+                xaxis: {
+                    categories: operatingHours,
+                    title: { text: 'Operating Hours' }
+                },
+                title: {
+                    text: 'Operating Hours vs Severity',
+                    align: 'center',
+                    style: { color: '#444' }
+                },
+                colors: [colors[3]],
+                stroke: { width: 2 }
+            };
+
+            var chart4 = new ApexCharts(document.querySelector("#chart4"), options4);
+            chart4.render();
+
+            // Chart 5: Predicted Unbalance Force vs Frequency (Distribution)
+            var options5 = {
+                series: [{
+                    name: 'Predicted Unbalance Force',
+                    data: predictedUnbalanceForce
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 220,
+                    toolbar: {
+                        show: true,
+                        tools: {
+                            zoom: false,
+                            zoomin: false,
+                            zoomout: false,
+                            pan: false,
+                            reset: false,
+                            download: true
+                        }
+                    }
+                },
+                xaxis: {
+                    categories: frequency,
+                    title: { text: 'Frequency' }
+                },
+                title: {
+                    text: 'Predicted Unbalance Force vs Frequency',
+                    align: 'center',
+                    style: { color: '#444' }
+                },
+                colors: [colors[4]],
+                plotOptions: {
+                    bar: {
+                        borderRadius: 5,
+                        horizontal: false,
+                    }
+                },
+                dataLabels: {
+                    enabled: false // Disable data labels
+                }
+            };
+
+            var chart5 = new ApexCharts(document.querySelector("#chart5"), options5);
+            chart5.render();
+
+            // Chart 6: Lifespan vs Frequency (Distribution with Limited Frequencies)
+            const sampleSize = 10; // Limit the number of data points
+            const step = Math.ceil(frequency.length / sampleSize);
+            const sampledFrequencies = frequency.filter((_, index) => index % step === 0);
+            const sampledLifespans = lifespan.filter((_, index) => index % step === 0);
+
+            var options6 = {
+                series: [{
+                    name: 'Lifespan',
+                    data: sampledLifespans
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 220,
+                    toolbar: {
+                        show: true,
+                        tools: {
+                            zoom: false,
+                            zoomin: false,
+                            zoomout: false,
+                            pan: false,
+                            reset: false,
+                            download: true
+                        }
+                    }
+                },
+                xaxis: {
+                    categories: sampledFrequencies,
+                    title: { text: 'Frequency' }
+                },
+                title: {
+                    text: 'Lifespan vs Frequency',
+                    align: 'center',
+                    style: { color: '#444' }
+                },
+                colors: [colors[5]],
+                plotOptions: {
+                    bar: {
+                        borderRadius: 5,
+                        horizontal: false,
+                    }
+                },
+                dataLabels: {
+                    enabled: false // Disable data labels
+                }
+            };
+
+            var chart6 = new ApexCharts(document.querySelector("#chart6"), options6);
+            chart6.render();
+        }
+
+        // Automatically load the dataset and create the charts when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            readExcelFile(datasetUrl).then(dataset => {
+                createCharts(dataset);
+            }).catch(err => {
+                console.error('Error reading the dataset:', err);
+            });
+        });
+    </script>
+</body>
+</html>

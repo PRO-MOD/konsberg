@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Upload Excel File</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .upload-section {
+            padding: 50px 0;
+        }
+
+        .upload-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-upload {
+            margin-top: 20px;
+        }
+
+        .upload-container h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #343a40;
+        }
+
+        .upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .btn-upload {
+            display: block;
+            width: 100%;
+            background-color: #107355;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .upload-preview {
+            margin-top: 20px;
+        }
+
+        .upload-preview p {
+            font-size: 1rem;
+            text-align: center;
+            color: #6c757d;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .icon {
+            color: #007bff;
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <div class="container upload-section">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="upload-container">
+                    <h2><i class="fas fa-file-excel icon"></i> Upload Excel File</h2>
+
+                    <!-- Upload Form -->
+                    <form action="/upload-excel" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="excelFile">Choose an Excel file to upload:</label>
+                            <div class="upload-btn-wrapper">
+                                <button class="btn-upload">Choose File</button>
+                                <input type="file" name="excelFile" id="excelFile" accept=".xlsx, .xls" required>
+                            </div>
+                        </div>
+
+                        <!-- Preview section -->
+                        <div class="upload-preview">
+                            <p>No file selected yet</p>
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="form-group text-center">
+                            <button type="submit" class="submit-btn">Upload File</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to update preview -->
+    <script>
+        document.getElementById('excelFile').addEventListener('change', function (e) {
+            var fileName = e.target.files[0].name;
+            document.querySelector('.upload-preview p').textContent = "Selected File: " + fileName;
+        });
+    </script>
+
+    <!-- Bootstrap and JS dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

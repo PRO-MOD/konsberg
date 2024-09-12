@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Predictive Maintenance
+    </title>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="static/images/favicon.png" type="image/png" />
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css" />
+
+    <!-- Fonts style -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- Font awesome style -->
+    <link href="static/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/style.css" rel="stylesheet" />
+    <!-- Responsive style -->
+    <link href="static/css/responsive.css" rel="stylesheet" />
+
+    <!-- Custom styles for the button color -->
+    <style>
+        /* Define styles for the theme-colored button */
+        .btn-theme-color {
+            background-color: #107355; /* Replace with your desired color */
+            color: #ffffff; /* Set text color */
+            border-color: #107355; /* Set border color */
+        }
+
+        /* Optionally, define hover and focus states for the button */
+        .btn-theme-color:hover,
+        .btn-theme-color:focus {
+            background-color: #0e6048; /* Darker shade for hover */
+            border-color: #0e6048;
+        }
+
+        /* Prediction section styling */
+        .predict_section {
+           
+            position: absolute;
+            top: 54%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 35%;
+        }
+
+        /* Adjust form container styling */
+        .predict_section .box {
+            padding: 18px;
+            border-radius: 2px;
+            background-color: rgb(255 255 255 / 36%);
+            box-shadow: 0 4px 8px rgb(0 0 0 / 83%);
+            color: #252525;
+        }
+
+        /* Adjust image preview styling */
+        #imagePreview {
+            margin-bottom: 20px;
+            max-width: 100%;
+            height: auto;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero_area">
+        <div class="hero_bg_box">
+            <img src="static/images/m4.jpg" alt="">
+        </div>
+
+        <!-- Header section starts -->
+        <header class="header_section">
+            <div class="container">
+              <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="/">
+                  <span>
+                    <img  src="static/images/logo.png" class="img-fluid" style="max-width: 50px; height: auto;"  >
+                      Predictive Maintenance
+                  </span>
+                </a>
+      
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""> </span>
+                </button>
+      
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/form"> Make Prediction</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/analysis">Analysis</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/info">Info</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/logout">logout</a>
+                        </li>
+                    
+                      </ul>
+                </div>
+              </nav>
+            </div>
+          </header>
+        <!-- End header section -->
+
+        <!-- Prediction section on top of the hero image -->
+        <section class="predict_section layout_padding ">
+            <div class="container">
+              <div class="heading_container heading_center text-white">
+    <!-- Increased heading size using display-4 -->
+    <h2 class="display-4">Predict Machine Fault</h2> 
+    <!-- Increased paragraph size with inline style -->
+    <p class="col-md-10 mx-auto px-0" style="font-size: 1.25rem;">Put Amplitude and Frequency.</p> 
+    <br>
+</div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="box">
+                            <form action="/predict" method="post" id="prediction-form">
+                                <!-- Image preview area -->
+                                <img id="imagePreview" style="margin-bottom: 20px; max-width: 100%; height: auto; display: none;" alt="Image preview">
+    
+                                <!-- File input -->
+                                <div class="form-group">
+                                    
+                                        <!-- Frequency Input -->
+                                        <label for="frequency">Frequency:</label>
+                                        <input type="text" id="frequency" name="frequency" class="form-control" placeholder="Enter frequency" required>
+                                        <span class="error-message" id="frequency-error" ></span>
+                                    
+                                    
+                                        <!-- Amplitude Input -->
+                                        <label for="amplitude">Amplitude:</label>
+                                        <input type="text" id="amplitude" name="amplitude" class="form-control" placeholder="Enter amplitude" required>
+                                        <span class="error-message" id="amplitude-error"></span>
+
+                                        
+
+                                         <label for="amplitude">OperatingHours:</label>
+                                        <input type="text" id="OperatingHours" name="OperatingHours" class="form-control" placeholder="Enter operatingHours" required>
+                                        <span class="error-message" id="amplitude-error"></span>
+
+                                        <label for="amplitude">Temperature:</label>
+                                        <input type="text" id="temperature" name="temperature" class="form-control" placeholder="Enter temperature" required>
+                                        <span class="error-message" id="amplitude-error"></span>
+
+                                        <label for="amplitude">Radius:</label>
+                                        <input type="text" id="radius" name="radius" class="form-control" placeholder="Enter Radius" required>
+                                        <span class="error-message" id="amplitude-error"></span>
+                                  
+                                    <br>
+                                </div>
+    
+                                <!-- Predict button -->
+                                <div class="form-group" style="text-align: center;">
+     <!-- Button with inline hover effect -->
+       <input type="submit" value="Predict" class="btn btn-primary btn-theme-color" 
+       style="background-color: #0e0e0e; color: white; border-color: #0e0e0e;"
+       onmouseover="this.style.backgroundColor='#575757'; this.style.borderColor='#575757';"
+       onmouseout="this.style.backgroundColor='#0e0e0e'; this.style.borderColor='#0e0e0e';">
+                                </div>
+                            </form>
+                            <div class="text-center mt-4">
+                                <p>or</p>
+                                <a href="/upload-excel" class="btn btn-primary btn-theme-color" style="background-color: #107355; color: white; border-color: #107355;">
+                                    Upload Bulk Entry
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer section -->
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 footer_col">
+                    <div class="footer_contact">
+                        <h4>Reach at...</h4>
+                        <div class="contact_link_box">
+                            <a href="https://www.google.com/maps/place/Ghansoli,+Navi+Mumbai,+Maharashtra/@19.1336,72.9874,15z">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span>Ghansoli</span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <span>Call +91 7039678397</span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <span>dermasure@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+                  
+                </div>
+                <div class="col-md-6 col-lg-3 footer_col">
+                    <div class="footer_detail">
+                        <h4>About</h4>
+                        <p>
+                            We are dedicated to revolutionizing equipment maintenance with cutting-edge AI technology. Our solutions help businesses optimize performance, reduce costs, and extend the lifespan of critical assets.                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2 mx-auto footer_col">
+                    <div class="footer_link_box">
+                        <h4>Links</h4>
+                        <div class="footer_links">
+                            <a href="/">Home</a>
+                            <a href="/form">Make Prediction</a>
+                            <a href="/info">info</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 footer_col">
+                    <h4>Newsletter</h4>
+                    <form action="#">
+                        <!-- <input type="email" placeholder="Enter email" /> -->
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-info">
+                <p>
+                    &copy; <span id="displayYear"></span> All Rights Reserved By
+                    <a href="https://html.design/">DermaSure</a>
+                    <!-- &copy; <span id="displayYear"></span> Distributed By
+                    <a href="https://themewagon.com/">ThemeWagon</a> -->
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- End footer section -->
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="static/js/bootstrap.js"></script>
+    <!-- Owl slider -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="static/js/custom.js"></script>
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap" defer></script>
+
+    <!-- JavaScript to preview the uploaded image -->
+    <script>
+        // Event listener for file input change
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('prediction-form');
+            const frequencyInput = document.getElementById('frequency');
+            const amplitudeInput = document.getElementById('amplitude');
+            const frequencyError = document.getElementById('frequency-error');
+            const amplitudeError = document.getElementById('amplitude-error');
+
+            form.addEventListener('submit', function(event) {
+                let valid = true;
+
+                if (!frequencyInput.value || isNaN(frequencyInput.value) || frequencyInput.value <= 0) {
+                    frequencyError.textContent = 'Please enter a valid frequency.';
+                    valid = false;
+                } else {
+                    frequencyError.textContent = '';
+                }
+
+                if (!amplitudeInput.value || isNaN(amplitudeInput.value) || amplitudeInput.value <= 0) {
+                    amplitudeError.textContent = 'Please enter a valid amplitude.';
+                    valid = false;
+                } else {
+                    amplitudeError.textContent = '';
+                }
+
+                if (!valid) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

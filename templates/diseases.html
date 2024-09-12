@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="static/images/favicon.png" type="image/png">
+
+    <title>Predictive Maintenance </title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css" />
+
+    <!-- Fonts style -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome style -->
+    <link href="static/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/style.css" rel="stylesheet" />
+    <!-- Responsive style -->
+    <link href="static/css/responsive.css" rel="stylesheet" />
+
+    <!-- Additional custom styles -->
+    <style>
+        /* Navbar styling */
+        .custom_nav-container {
+            background-color: transparent;
+        }
+
+        /* Position the disease section on top of the hero image */
+        .hero_bg_box {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Style the hero background image */
+        .hero_bg_box img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Position the disease section on top of the hero image */
+        .disease_section {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        /* Style the disease section */
+        .disease_section .container {
+            background-color: rgb(220 220 220 / 58%);
+            box-shadow: 0 4px 8px rgb(0 0 0 / 83%);
+            padding: 20px;
+            border-radius: 2px;
+        }
+
+        /* Disease grid and items */
+        .disease_grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .disease_item {
+            flex: 0 0 30%;
+            text-align: center;
+        }
+
+        .disease_item .box {
+            padding: 10px;
+            border-radius: 2px;
+            background-color: #e2e2e2bd;
+            box-shadow: 0 4px 8px rgb(0 0 0 / 83%);
+            color: #000000;
+        }
+
+        .disease_item .box:hover {
+            transform: translateY(-5px);
+        }
+
+        .detail_box h5 {
+            margin: 10px;
+        }
+
+        .detail_box h5 a {
+            font-size: 16px;
+            color: #141516;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .detail_box h5 a:hover {
+            color: #0056b3;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Hero area -->
+    <div class="hero_area">
+
+        <!-- Hero background image -->
+        <div class="hero_bg_box">
+            <img src="static/images/m4.jpg" alt="Hero Background">
+        </div>
+
+        <!-- Header section -->
+        <header class="header_section">
+            <div class="container">
+              <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="/">
+                  <span>
+                    <img  src="static/images/logo.png" class="img-fluid" style="max-width: 50px; height: auto;"  >
+
+
+                      Predictive Maintenance
+                  </span>
+                </a>
+      
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""> </span>
+                </button>
+      
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/form"> Make Prediction</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/analysis">Analysis</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/info">Info</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/logout">logout</a>
+                        </li>
+                    
+                      </ul>
+                </div>
+              </nav>
+            </div>
+          </header>
+        <!-- End header section -->
+
+        <!-- Disease section placed on top of the hero image -->
+        <section class="disease_section layout_padding">
+            <div class="container">
+                <div class="heading_container heading_center">
+                    <h2>Preventive Measures</h2>
+                    <br>
+                    <h5 class="col-md-10 mx-auto px-0">
+                        Stay Ahead of Faults: Key Measures for Machine Health!!
+                    </h5>
+                </div>
+                <br>
+                <!-- Display diseases with links -->
+                <div class="disease_grid">
+                    <!-- Disease item -->
+                    <div class="disease_item">
+                        <div class="box">
+                            <div class="detail_box">
+                                <h5>
+                                    <a href="https://rpmmachinery.com/importance-of-regular-equipment-inspections/#:~:text=Regular%20inspections%20help%20prolong%20the%20lifespan%20of%20your,your%20equipment%20investment%20and%20avoid%20costly%20major%20repairs." target="_blank">
+                                        Maintenance Checks
+
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- More disease items -->
+                    <div class="disease_item">
+                        <div class="box">
+                            <div class="detail_box">
+                                <h5>
+                                    <a href="https://onlinelibrary.wiley.com/doi/10.1155/2021/9469318" target="_blank">
+                                        Vibration Monitoring
+
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="disease_item">
+                        <div class="box">
+                            <div class="detail_box">
+                                <h5>
+                                    <a href="https://tameson.com/pages/temperature-control-devices" target="_blank">
+                                        Temperature Control
+
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="disease_item">
+                        <div class="box">
+                            <div class="detail_box">
+                                <h5>
+                                    <a href="https://www.hamarlaser.com/laser-alignment/?hlt_source=Bing&hlt_medium=cpc&hlt_campaign=Laser%20Alignment&hlt_adgroup=Laser%20Alignment&hlt_adtype=search&hlt_content=78340408485151&hlt_term=machinery%20alignment&msclkid=f3e4e3a706b51c894e468570f82cdc3d&utm_source=bing&utm_medium=cpc&utm_campaign=Laser%20Alignment&utm_term=machinery%20alignment&utm_content=Laser%20Alignment" target="_blank">
+                                        Correct Alignment
+
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="disease_item">
+                        <div class="box">
+                            <div class="detail_box">
+                                <h5>
+                                    <a href="https://training.safetyculture.com/course-collection/heavy-equipment-safety-training-programs/" target="_blank">
+                                        Operator Training
+
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="disease_item">
+                        <div class="box">
+                            <div class="detail_box">
+                                <h5>
+                                    <a href="https://www.mes.com.sg/2024/08/14/5-benefits-of-high-quality-motor-parts-and-components/" target="_blank">
+                                        Quality Parts
+
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="disease_item">
+                        <div class="box">
+                            <div class="detail_box">
+                                <h5>
+                                    <a href="https://ezo.io/ezofficeinventory/blog/equipment-maintenance-history-tracking-software/" target="_blank">
+                                        Usage Tracking
+
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="disease_item">
+                        <div class="box">
+                            <div class="detail_box">
+                                <h5>
+                                    <a href="https://www.machinerylubrication.com/Read/31888/lubrication-best-practices" target="_blank">
+                                        Lubrication
+
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer section -->
+   <!-- Footer section -->
+   <footer class="footer_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 footer_col">
+                <div class="footer_contact">
+                    <h4>Reach at...</h4>
+                    <div class="contact_link_box">
+                        <a href="https://www.google.com/maps/place/Ghansoli,+Navi+Mumbai,+Maharashtra/@19.1336,72.9874,15z">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>Ghansoli</span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>Call +91 7039678397</span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>dermasure@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="col-md-6 col-lg-3 footer_col">
+                <div class="footer_detail">
+                    <h4>About</h4>
+                    <p>
+                        We are dedicated to revolutionizing equipment maintenance with cutting-edge AI technology. Our solutions help businesses optimize performance, reduce costs, and extend the lifespan of critical assets.                        </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-2 mx-auto footer_col">
+                <div class="footer_link_box">
+                    <h4>Links</h4>
+                    <div class="footer_links">
+                        <a href="/">Home</a>
+                        <a href="/form">Make Prediction</a>
+                        <a href="/diagnosis">info</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 footer_col">
+                <h4>Newsletter</h4>
+                <form action="#">
+                    <!-- <input type="email" placeholder="Enter email" /> -->
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-info">
+            <p>
+                &copy; <span id="displayYear"></span> All Rights Reserved By
+                <a href="https://html.design/">DermaSure</a>
+                <!-- &copy; <span id="displayYear"></span> Distributed By
+                <a href="https://themewagon.com/">ThemeWagon</a> -->
+            </p>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>
